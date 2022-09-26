@@ -1,10 +1,10 @@
 const quizData = [
   {
     question: "Everything in JavaScript is either a...",
-    a: "primitive or object",
-    b: "function or object",
-    c: "trick question! only objects",
-    d: "number or object",
+    a: "Primitive or object",
+    b: "Function or object",
+    c: "Trick question! only objects",
+    d: "Number or object",
     correct: "a",
   },
   {
@@ -31,11 +31,10 @@ const quizData = [
     d: "none of the above",
     correct: "b",
   },
-];
-
+]
 
 const quiz = document.getElementById('quiz')
-const answerLi = document.querySelectorAll('.answer')
+const answerLis = document.querySelectorAll('.answer')
 const questionTitle = document.getElementById('question')
 const a_text = document.getElementById('a_text')
 const b_text = document.getElementById('b_text')
@@ -48,45 +47,52 @@ let score = 0
 
 loadQuiz()
 
-const loadQuiz = () => {
-    deselectAnswer()
+function loadQuiz() {
+  deselectAnswers()
 
-    const currentQuizData = quizData[currentQuiz]
-    questionTitle.innerText = currentQuizData.question
-    a_text.innerText = currentQuizData.a
-    b_text.innerText = currentQuizData.b
-    c_text.innerText = currentQuizData.c
-    d_text.innerText = currentQuizData.d
- }
+  const currentQuizData = quizData[currentQuiz]
 
- const deselectAnswer = () => {
-    answerLi.forEach(input => input.checked = false)
- }
+  questionTitle.innerText = currentQuizData.question
+  a_text.innerText = currentQuizData.a
+  b_text.innerText = currentQuizData.b
+  c_text.innerText = currentQuizData.c
+  d_text.innerText = currentQuizData.d
+}
 
-const getSelected = () => {
-    let answer
+function deselectAnswers() {
+  answerLis.forEach(answerEl => answerEl.checked = false)
+}
 
-    answerLi.forEach(list => {
-      if (list.checked) {
-        answer = list.id
+function getSelected() {
+  let answer
+
+  answerLis.forEach(answerEl => {
+      if(answerEl.checked) {
+          answer = answerEl.id
       }
-    });
-    return answer
- }
+  })
+
+  return answer
+}
 
 submitBtn.addEventListener('click', () => {
   const answer = getSelected()
 
-  if (answer) {
-    if (answer === quizData[currentQuiz].correct) {
-      score++
-    }
-    currentQuiz++
+  if(answer) {
+      if(answer === quizData[currentQuiz].correct) {
+          score++
+      }
 
-    (currentQuiz < quizData.length)
-    ? loadQuiz()
-    : quiz.innerHTML = `<h2>You answered ${score}/${quizData.length} questions correctly</h2>
-    <button onclick="location.reload()">Reload</button>`
+      currentQuiz++
 
+      if(currentQuiz < quizData.length) {
+          loadQuiz()
+      } else {
+          quiz.innerHTML = `
+              <h2>You answered ${score}/${quizData.length} questions correctly</h2>
+
+              <button onclick="location.reload()">Reload</button>
+          `
+      }
   }
-} )
+})
