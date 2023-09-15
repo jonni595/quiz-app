@@ -1,5 +1,4 @@
-# quiz-app ✏
-Question quiz app
+# Quiz-App ✏
 
 ## Conceptos usados
 
