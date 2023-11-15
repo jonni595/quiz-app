@@ -1,8 +1,7 @@
 # Quiz-App ✏
 
-## Conceptos usados
+## Skills
 
-* Manipulación del dom
-* Uso de eventos
-* Operador ternario ? :
-* Método forEach()
+* Vanilla
+* DOM
+* SCSS
