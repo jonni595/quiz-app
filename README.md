@@ -4,4 +4,4 @@
 
 * Vanilla
 * DOM
-* SCSS
+* CSS
