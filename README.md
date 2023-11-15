@@ -2,6 +2,6 @@
 
 ## Skills
 
-* Vanilla
+* Vanilla JS
 * DOM
 * CSS
